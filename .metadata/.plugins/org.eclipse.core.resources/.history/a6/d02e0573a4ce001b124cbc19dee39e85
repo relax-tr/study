@@ -104,11 +104,14 @@
 				
 				success : function(e) {
 
-					 var trHTML = '';
-				        $.each(e, function (i, item) {
-				            trHTML += '<tr><td>' + item.questionid + '</td><td>' + item.qtext + '</td><td>' + item.categoryid + '</td></tr>';
+					alert(JSON.stringify(e));
+
+					 $.each(e, function (i, item) {
+				            trHTML += '<tr><td>' + item.questionid + '</td><td>' + item.test + '</td><td>' + item.categoryid + '</td></tr>';
 				        });
 				        $('#records_table').append(trHTML);
+
+					});
 
 				},
 				

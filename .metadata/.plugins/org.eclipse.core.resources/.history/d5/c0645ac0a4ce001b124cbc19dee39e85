@@ -106,7 +106,7 @@
 
 					 var trHTML = '';
 				        $.each(e, function (i, item) {
-				            trHTML += '<tr><td>' + item.questionid + '</td><td>' + item.qtext + '</td><td>' + item.categoryid + '</td></tr>';
+				            trHTML += '<tr><td>' + item.rank + '</td><td>' + item.content + '</td><td>' + item.UID + '</td></tr>';
 				        });
 				        $('#records_table').append(trHTML);
 
