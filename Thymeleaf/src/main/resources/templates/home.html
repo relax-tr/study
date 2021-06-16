@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  >
+  
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+
+
+
+<div th:object="${book}">
+
+
+<p   th:text="*{name}"   >
+  <p th:text="*{title}">...</p>
+  <div align="right"    >
+  <p   th:text="*{count}"    ></p>
+  </div>
+  
+  
+  
+
+  
+  
+  
+</div>
+
+
+<div   th:include="layout :: copy" ></div>
+<div   th:include="layout :: #copy-section" ></div>
+
+
+<div th:with="book=${bookliste[0]}">
+  <p>
+    The name of the first person is <span th:text="${book.name}">Julius Caesar</span>.<br>
+    The name of the first person is <span th:text="${book.title}">Julius Caesar</span>.<br>
+    The name of the first person is <span th:text="${book.count}">Julius Caesar</span>.
+  </p>
+</div>
+
+
+<button onclick="myFunction()"  >push me</button>
+
+
+<script th:inline="javascript">
+function myFunction() {
+	  alert("Hello! I am an alert box!");
+	}
+</script>
+
+
+<br><hr>
+<a th:href="@{http://www.google.com}">google</a><br>
+
+ <a th:href="@{home/asd}">Return to home</a>
+ 
+ <br><hr>
+ <br><hr>
+ <br><hr>
+ 
+ <p th:text="${#dates.createNow()}" > </p>
+
+ 
+ 
+
+</body>
+</html>

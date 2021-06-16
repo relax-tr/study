@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<title>yeni soru ekleme</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+	<div class="container">
+
+		<!--  
+ 
+ -->
+
+
+
+		<div class="alert alert-primary" role="alert">yeni soru ekleme</div>
+
+		<form th:action="@{/save}" method="post">
+			<input type="text" th:field="*{id}" disabled="disabled" />
+			
+			<div class="form-group" th:object="${question}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="text" th:field="*{qtext}" />
+			</div>
+
+
+
+			<div class="form-group" th:object="${question}">
+				
+
+				<select th:field="*{categoryid}">
+
+					<option th:each="category : ${categories}"
+						th:value="${category.categoryid}" th:utext="${category.cname}" />
+				</select>
+
+			</div>
+
+			<div id="test">
+
+
+				<p>If you click on me, I will disappear.</p>
+
+
+
+
+				<fieldset id="answers">
+
+
+
+					<div>
+
+						<div class="row">
+							<div class="col">
+
+
+								<label>answer text</label> <input
+									th:field="${answer.answerText}">
+
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col">
+
+								<label>ANSWER İS TRUE</label> <input type="checkbox"
+									th:field="*{answer.Truemu}" />
+
+
+
+								<!-- 							<label class="radio-inline">  -->
+
+								<!-- 							<input type="radio" th:field="${answer.Truemu}" th:value="${ty}" /> -->
+
+
+
+
+								<!-- 							<input type="radio" -->
+								<!-- 								name="optionsRadiosInline1" id="optionsRadiosInline1" value="TRUE" -->
+								<!-- 								th:checked = />     -->
+
+
+
+								<!-- 								İS TRUE CHOİCE -->
+								<!-- 							</label> <label class="radio-inline"> <input type="radio" -->
+								<!-- 								name="optionsRadiosInline1" id="optionsRadiosInline2" value="FALSE" -->
+								<!-- 								th:checked ="*{answer.Truemu} == true" />  İS FALSE CHOİCE -->
+								<!-- 							</label> -->
+
+							</div>
+						</div>
+
+
+
+
+
+
+
+
+
+						<button type="button" name="addItem">Add answer</button>
+					</div>
+
+
+
+
+				</fieldset>
+
+
+			</div>
+
+
+			<!-- 			<div class="form-group" th:object="${answer}"   > -->
+
+
+
+
+
+
+			<!-- 				<div class="row"> -->
+
+			<!-- 					<div class="col"> -->
+			<!-- 						<input type="text" th:field="*{answerText}" /> -->
+			<!-- 					</div> -->
+			<!-- 					<div class="col">Question text</div> -->
+			<!-- 					<div class="col"></div> -->
+
+
+
+			<!-- 					<div class="col"> -->
+			<!-- 						<input type="radio" name="size" value="0"> FALSE ANSWER</input> <input -->
+			<!-- 							type="radio" name="size" value="1"> TRUE ANSWER</input> -->
+			<!-- 					</div> -->
+
+
+
+
+			<!-- <button type="submit">save</button> -->
+
+
+
+
+			<!-- 				</div> -->
+
+
+
+			<!-- 				<table class="table table-striped table-primary"> -->
+
+
+
+
+
+
+			<!-- 				</table> -->
+
+
+
+			<!-- 			</div> -->
+
+
+
+
+
+
+			<button type="submit" id="addSave">save</button>
+
+
+
+
+
+
+
+
+
+
+			<!-- 			<div class="form-group"> -->
+			<!-- 				<label for="exampleInputEmail1">Question text</label> <input -->
+			<!-- 					type="text" th:value="${answer.answerText}" /> <small id="emailHelp" -->
+			<!-- 					class="form-text text-muted">We'll never share your email -->
+			<!-- 					with anyone else.</small> -->
+			<!-- 			</div> -->
+
+
+
+
+
+
+			<!-- 			<div class="row"> -->
+			<!-- 			<div class="col">Question text</div>	<div class="col"> -->
+			<!-- 					<input type="text" th:field="*{qtext}" /> -->
+			<!-- 				</div> -->
+
+			<!-- 				<div class="col"></div> -->
+			<!-- 			</div> -->
+
+
+			<!-- 			<br> <br> <br> -->
+
+			<!-- 			<select th:field="${categories}"> -->
+			<!-- 				<option th:each="i : ${categories}" th:value="${i.id}" -->
+			<!-- 					th:text="${i.cname}" th:selected="${i==75}"></option> -->
+			<!-- 			</select> -->
+
+
+		</form>
+
+
+
+	</div>
+	<script>
+		$(document).ready(function() {
+			$('#test').hide();
+		});
+
+		function showTable() {
+			$('#test').show();
+			localStorage.setItem('show', 'true'); //store state in localStorage
+		}
+
+		$(document).ready(function() {
+			var show = localStorage.getItem('addSave');
+			if (show === 'true') {
+				$('#test').show();
+			}
+		});
+
+		$('button[name="addItem"]').click(function(event) {
+			event.preventDefault();
+			var data = $('form').serialize();
+			// Add parameter "addItem" to POSTed form data. Button's name and value is
+			// POSTed only when clicked. Since "event.preventDefault();" prevents from
+			// actual clicking the button, following line will add parameter to form
+			// data.
+			data += 'addItem';
+			$.post('/answeradd', data);
+		});
+	</script>
+
+
+
+
+	</script>
+
+
+</body>
+</html>

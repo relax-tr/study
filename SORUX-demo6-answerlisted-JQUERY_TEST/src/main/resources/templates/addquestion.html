@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<title>yeni soru ekleme</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+	<div class="container">
+
+		<!--  
+ 
+ -->
+
+
+
+		<div class="alert alert-primary" role="alert">yeni soru ekleme</div>
+
+		<form th:action="@{/save}" method="post" id="zdfvbzdfb">
+
+
+			<div class="form-group" th:object="${test}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="text" th:field="*{tQuestion.qtext}" /> <input type="hidden"
+					th:field="*{tQuestion.questionid}">
+			</div>
+
+
+
+			<div class="form-group" th:object="${test}">
+
+
+				<select th:field="*{tQuestion.categoryid}">
+
+					<option th:each="category : ${categories}"
+						th:value="${category.categoryid}" th:utext="${category.cname}" />
+				</select>
+
+			</div>
+			<p th:text=${test.tQuestion.questionid}></p>
+			<hr>
+			<div th:if="${test.tQuestion.questionid gt  0}">
+
+				<p th:text=${test.tQuestion.questionid}></p>
+
+
+
+			</div>
+
+			<div th:if="${test.tQuestion.questionid eq  0}">
+
+				<button type="submit" id="addSave">save</button>
+
+
+			</div>
+
+			<!-- 			<div th:if="${question.questionid gt  0}"> -->
+
+			<!-- 				<button type="submit" id="addSave">SORUYU KAYDET VE TAMAMLA</button> -->
+
+
+			<!-- 			</div> -->
+
+
+
+		</form>
+
+
+		<div th:if="${test.tQuestion.questionid gt  0}">
+
+			<form id="test" th:action="@{/answerAdd}" method="post">
+
+				<p th:text=${test.tQuestion.questionid}></p>
+
+				<div class="form-group" th:object="${test}">
+					<label for="exampleInputEmail1">Question text</label> <input id="questionid"
+						type="hidden" th:field="*{tQuestion.questionid}" />
+
+				</div>
+
+
+
+
+				<div class="form-group" th:object="${test}">
+					<label for="exampleInputEmail1">Question text</label> <input id="questionid"
+						type="text" th:field="*{tQuestion.qtext}" />
+				</div>
+				<div class="form-group" th:object="${test}">
+					<label for="exampleInputEmail1">answer text</label> <input
+						id="answertext" type="text" th:field="*{tAnswer.answerText}" />
+				</div>
+
+
+
+
+
+
+				<div>
+
+					<div class="row">
+						<div class="col">
+
+							<label>ANSWER İS TRUE</label> <input type="checkbox"
+								th:field="*{test.tAnswer.Truemu}" />
+						</div>
+					</div>
+
+				</div>
+
+
+
+				<button type="submit">Add ANSWER</button>
+
+
+				<table
+					class="table table-bordered table-responsive-md table-striped text-center">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">answer text</th>
+							<th scope="col">answer is true</th>
+							<th scope="col">Actions</th>
+
+						</tr>
+					</thead>
+
+					<tbody th:if="${#lists.isEmpty(answers)}">
+						<tr>
+							<td colspan="3">No Data found</td>
+						</tr>
+					</tbody>
+
+
+					<tbody>
+						<tr class="deneme" th:each="answer : ${answers}">
+							<td th:text="${answer.answerId}" ></td>
+							<td class="pt-3-half" contenteditable="true"
+								th:text="${answer.answerText}"  id="abc"   ></td>
+							<td th:text="${answer.Truemu}" contenteditable="true"></td>
+
+							<!-- 							<td th:each="category : ${categories}" -->
+							<!-- 								th:if="(${category.categoryid} == ${question.categoryid})" -->
+							<!-- 								th:utext="${category.cname}"></td> -->
+							<td><a th:onclick="'alert(\'a\');'"     >Add answer</a>
+								<a th:href="@{/deletequestion/{id}(id=${answer.answerId}),{id2}(id2=${answer.answerId})}">Delete</a>
+
+							</td>
+						</tr>
+
+					</tbody>
+					
+					
+					
+				</table>
+
+
+
+
+
+
+				<!--  alert("OPPS, İ CATCH U!!!"); -->
+
+<input hidden="true" id="questionid" th:text=${answer.answerId}>
+
+			</form>
+		</div>
+	</div>
+
+<script>
+
+function   Update (id,answer){
+	
+	
+	alert($(id,answer);
+	
+	
+}
+
+
+
+
+
+		$('button[name="addItem"]').click(function(event) {
+			event.preventDefault();
+			var data = $('form').serialize();
+			// Add parameter "addItem" to POSTed form data. Button's name and value is
+			// POSTed only when clicked. Since "event.preventDefault();" prevents from
+			// actual clicking the button, following line will add parameter to form
+			// data.
+			data +=$("#abc").text();
+			
+			alert($("#abc").text());
+
+			$.ajax({
+			
+				url:'/aaa',
+				type:'POST',
+				data:{
+									
+					"abc":$("#abc").text()
+				}
+				
+			})
+	<!--	$.post('/aaa', data);  -->
+		});
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>wellcome to abidin page</title>
+
+<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css">
+
+#h-div1 {
+
+
+width: 100 %;
+height: 80px;
+
+
+
+
+}
+
+
+#h-div2 {
+
+
+width:90 %;
+height: 80px;
+background-color: red;
+
+float: left;
+
+}
+
+
+#h-div3 {
+
+
+width: 40%;
+height: 80px;
+background-color: blue;
+
+float: left;
+
+
+
+}
+
+#h-div4 {
+
+
+width: 20%;
+height: 80px;
+background-color: green;
+
+float: left;
+
+
+
+}
+
+
+
+header {
+
+background-color: ;
+
+width: 100%;
+height: 1000px !important;
+
+}
+
+   body { background: #00F0FF !important;
+   
+   
+   
+    
+   opacity: 1   !important;
+   
+    } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+
+<!-- Custom styles for this template -->
+
+
+
+
+
+<script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>

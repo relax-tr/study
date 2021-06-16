@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<style type="text/css">
+header {
+	background-color: red;
+	width: 100%;
+	height: 1000px !important;
+}
+</style>
+
+
+
+
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+	<div class="container">
+
+
+
+
+
+
+
+
+		<form th:action="@{/}" th:object="${question}" method="get">
+			<p>
+				<input type="text" th:field="*{qtext}" id="inptbtn" /> <input
+					type="Submit" id="btn" value="search" class="btn btn-primary">
+			</p>
+			<p></p>
+		</form>
+
+
+		<a th:href="@{/new}"> Soru ekle</a>
+
+
+
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">question text</th>
+					<th scope="col">question category</th>
+					<th scope="col">Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="question : ${questions}">
+					<td th:text="${question.id}"></td>
+					<td th:text="${question.qtext}"></td>
+
+
+
+					<td th:each="category : ${categories}"
+						th:if="(${category.categoryid} == ${question.categoryid})"
+						th:utext="${category.cname}"></td>
+
+
+
+
+
+					<td><a th:href="@{/update/{id}(id=${question.id})}">Edit</a> <a
+						th:href="@{/delete/{id}(id=${question.id})}">Delete</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+<br/><br/>
+<p>boşluk</p>
+<div class="row" >
+<input id="myInput" type="text" placeholder="Search..">
+<table>
+  <thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>john@example.com</td>
+  </tr>
+  <tr>
+    <td>Mary</td>
+    <td>Moe</td>
+    <td>mary@mail.com</td>
+  </tr>
+  <tr>
+    <td>July</td>
+    <td>Dooley</td>
+    <td>july@greatstuff.com</td>
+  </tr>
+  <tr>
+    <td>Anja</td>
+    <td>Ravendale</td>
+    <td>a_r@test.com</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+	</div>
+
+	
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+
+$( document ).ready(function() {
+  
+	$("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#myTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	
+	
+	
+});
+
+</script>
+	<script type="text/javascript" th:src="@{/js/asd.js}">
+
+	
+	
+});
+
+</script>
+
+
+</body>
+</html>

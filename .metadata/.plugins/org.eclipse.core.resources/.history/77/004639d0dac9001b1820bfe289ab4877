@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<style type="text/css">
+
+
+header {
+
+background-color: red;
+
+width: 100%;
+height: 1000px;
+
+}
+
+
+
+</style>
+
+
+
+
+<title>Insert title here</title>
+</head>
+<body  >
+
+
+	
+	
+	
+	<header></header>
+
+
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+  
+	
+	$("#inptbtn").keyup(function() {
+		var a=$("#inptbtn").val();
+		
+		$("#btn").attr('value', a);
+		
+	});
+	
+	
+	
+	$("#btn2").click(function () {
+		
+		$("#divbtn").load("static/file/asd.txt");
+		
+		
+	});
+	
+	
+	
+	
+	
+});
+
+</script>
+<script type="text/javascript"  th:src="@{/js/asd.js}" >
+
+	
+	
+});
+
+</script>
+
+
+</body>
+</html>

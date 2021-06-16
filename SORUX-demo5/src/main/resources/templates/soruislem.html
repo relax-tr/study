@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"    >
+<head th:replace="fragments/head :: head"  >
+<meta charset="UTF-8">
+<title>category Ekleme</title>
+</head>
+<body>
+
+
+<nav th:replace="fragments/navbar :: navbar" ></nav>
+
+<div class="container" >
+
+<p >welcome to soru islemleri</p>
+
+
+<div class="d-flex justify-content-end">
+
+<a th:href="@{/newCategory}"> Category ekle</a>
+
+
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">question text</th>
+      <th scope="col">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+     <tr th:each="category : ${categories}">
+        <td th:text="${category.categoryid}"   >
+            
+        </td>
+        <td th:text="${category.cname}"   >
+            
+        </td>
+        <td   ><a  >Edit</a>
+            
+        </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

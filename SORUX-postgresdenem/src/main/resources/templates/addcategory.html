@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"    >
+<head th:replace="fragments/head :: head"  >
+<meta charset="UTF-8">
+<title>yeni Catgory Ekleme</title>
+</head>
+<body>
+
+
+<nav th:replace="fragments/navbar :: navbar" ></nav>
+
+
+<div class="container" >
+
+<!--  
+ 
+ -->
+
+
+
+<div class="alert alert-primary" role="alert">
+ yeni category ekleme
+</div>
+
+<form th:action="@{/savecategory}" th:object="${category}"    method="post">
+    
+     <div class="row">
+    <div class="col">
+    <input type="text" th:field="*{cname}" />
+    </div>
+    <div class="col">
+     kategori  adı
+    </div>
+    <div class="col">
+
+  </div> </div>
+    
+    
+    
+    
+    
+<button   type="submit" >save</button> 
+
+    
+        
+        
+    </form>
+
+
+
+</div>
+
+
+
+</body>
+</html>

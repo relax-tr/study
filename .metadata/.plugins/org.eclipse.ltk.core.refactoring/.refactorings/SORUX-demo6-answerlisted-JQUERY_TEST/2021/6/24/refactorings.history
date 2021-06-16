@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SORUX-demo6-answerlisted-JQUERY_TEST/src/main/resources/static/JS&apos; to &apos;js&apos;" description="Rename resource &apos;JS&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/static/JS" name="js" stamp="1623307959184" updateReferences="true"/>
+</session>

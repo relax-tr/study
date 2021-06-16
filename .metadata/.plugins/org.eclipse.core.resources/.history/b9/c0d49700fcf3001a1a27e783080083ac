@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+
+<script type="text/javascript">
+function msg(){
+alert("Hello Javatpoint");
+}
+</script>
+    <title>Contact Us</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <p>Welcome to JavaScript</p>  
+<form>  
+<input type="button" value="click" onclick="msg()"/>  
+</form>  
+    
+    
+    
+</div>
+>
+<th:block th:fragment="optional">
+    
+</th:block>
+
+</body>
+
+
+</html>

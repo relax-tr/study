@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<title>yeni soru ekleme</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+	<div class="container">
+
+		<!--  
+ 
+ -->
+
+
+
+		<div class="alert alert-primary" role="alert">yeni soru ekleme</div>
+
+		<form th:action="@{/save}" method="post" id="zdfvbzdfb">
+
+
+			<div class="form-group" th:object="${test}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="text" th:field="*{tQuestion.qtext}" /> <input type="hidden"
+					th:field="*{tQuestion.questionid}">
+			</div>
+
+
+
+			<div class="form-group" th:object="${test}">
+
+
+				<select th:field="*{tQuestion.categoryid}">
+
+					<option th:each="category : ${categories}"
+						th:value="${category.categoryid}" th:utext="${category.cname}" />
+				</select>
+
+			</div>
+			<p th:text=${test.tQuestion.questionid}></p>
+			<hr>
+			<div th:if="${test.tQuestion.questionid gt  0}">
+
+				<p th:text=${test.tQuestion.questionid}></p>
+
+
+
+			</div>
+
+			<div th:if="${test.tQuestion.questionid eq  0}">
+
+				<button type="submit" id="addSave">save</button>
+
+
+			</div>
+
+			<!-- 			<div th:if="${question.questionid gt  0}"> -->
+
+			<!-- 				<button type="submit" id="addSave">SORUYU KAYDET VE TAMAMLA</button> -->
+
+
+			<!-- 			</div> -->
+
+
+
+		</form>
+
+
+		<div th:if="${test.tQuestion.questionid gt  0}">
+
+			<form id="test" th:action="@{/answerAdd}" method="post">
+
+				<p th:text=${test.tQuestion.questionid}></p>
+
+				<div class="form-group" th:object="${test}">
+					<label for="exampleInputEmail1">Question text</label> <input
+						type="hidden" th:field="*{tQuestion.questionid}" />
+
+				</div>
+
+
+
+
+				<div class="form-group" th:object="${test}">
+					<label for="exampleInputEmail1">Question text</label> <input
+						type="text" th:field="*{tQuestion.qtext}" />
+				</div>
+				<div class="form-group" th:object="${test}">
+					<label for="exampleInputEmail1">answer text</label> <input
+						type="text" th:field="*{tAnswer.answerText}" />
+				</div>
+
+
+
+
+
+
+				<div>
+
+					<div class="row">
+						<div class="col">
+
+							<label>ANSWER İS TRUE</label> <input type="checkbox"
+								th:field="*{test.tAnswer.Truemu}" />
+						</div>
+					</div>
+
+				</div>
+
+
+
+				<button type="submit" name="addItem">Add ANSWER</button>
+
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">answer text </th>
+							<th scope="col">answer is true</th>
+							<th scope="col">Actions</th>
+
+						</tr>
+					</thead>
+
+					<tbody th:if="${#lists.isEmpty(answers)}">
+						<tr>
+							<td colspan="3">No Data found</td>
+						</tr>
+					</tbody>
+
+
+					<tbody>
+						<tr th:each="answer : ${answers}">
+
+
+
+
+
+							<td th:text="${answer.answerId}"></td>
+							<td th:text="${answer.answerText}"></td>
+							<td th:text="${answer.Truemu}"></td>
+
+
+
+<!-- 							<td th:each="category : ${categories}" -->
+<!-- 								th:if="(${category.categoryid} == ${question.categoryid})" -->
+<!-- 								th:utext="${category.cname}"></td> -->
+
+
+
+
+
+							<td><!-- 							<a th:href="@{/update/{id}(id=${question.id})}">Edit</a> --> <!-- 								<a th:href="@{/delete/{id}(id=${question.id})}">Delete</a> -->
+
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+
+
+
+
+
+
+
+
+
+
+			</form>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

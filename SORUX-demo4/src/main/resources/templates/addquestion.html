@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<title>yeni soru ekleme</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+	<div class="container">
+		<div class="alert alert-primary" role="alert">yeni soru ekleme</div>
+		<form th:action="@{/save}" method="post">
+			<div class="form-group" th:object="${question}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="text" th:field="*{qtext}" />
+			</div>
+			<div class="form-group" th:object="${question}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="text" th:field="*{questionid}" />
+			</div>
+			<div class="form-group" th:object="${question}">
+
+
+				<select th:field="*{categoryid}">
+
+					<option th:each="category : ${categories}"
+						th:value="${category.categoryid}" th:utext="${category.cname}" />
+				</select>
+
+			</div>
+			<p th:text=${question.questionid}></p>
+			<hr>
+			<div th:if="${question.questionid gt  0}">
+				<p th:text=${question.questionid}></p>
+				<fieldset id="answers">
+					<div>
+						<div class="row">
+							<div class="col">
+								<label>answer text</label> <input
+									th:field="${answer.answerText}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+
+								<label>ANSWER İS TRUE</label> <input type="checkbox"
+									th:field="*{answer.Truemu}" />
+							</div>
+						</div>
+						<button type="button" name="addItem">Add answer</button>
+					</div>
+				</fieldset>
+			</div>
+
+			<div th:if="${question.questionid eq  0}">
+
+				<button type="submit" id="addSave">save</button>
+
+
+			</div>
+
+			<div th:if="${question.questionid gt  0}">
+				<button type="submit" id="addSave">SORUYU KAYDET VE TAMAMLA</button>
+			</div>
+			<input hidden="true" id="questionid" th:text=${question.questionid}>
+		</form>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		$('button[name="addItem"]').click(function(event) {
+			event.preventDefault();
+			alert("Hello! I am an alert box!!");
+			
+			var data = $('form').serialize();
+			// Add parameter "addItem" to POSTed form data. Button's name and value is
+			// POSTed only when clicked. Since "event.preventDefault();" prevents from
+			// actual clicking the button, following line will add parameter to form
+			// data.
+			console
+					data += 'questionid';
+
+					$.post('/answeradd', data);
+				});
+			</script>
+	';
+
+
+</body>
+</html>

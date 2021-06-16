@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/base :: baseHead(~{::title}, ~{::link})">
+
+    <title>Introduction to Thymeleaf Fragments | Atta Blog</title>
+
+    
+
+</head>
+<body>
+
+<div th:insert="/components :: header"></div>
+
+<div th:replace="/components :: menu"></div>
+
+<div th:include="/components :: header"></div>
+
+
+
+
+
+<h1 style="color: red"   >footer</h1>
+<div th:insert="/footer :: footer"></div>
+</body>
+</html>

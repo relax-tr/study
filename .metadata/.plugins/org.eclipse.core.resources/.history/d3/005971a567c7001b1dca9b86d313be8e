@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link href="webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>Insert title here</title>
+
+<style>
+
+#c1{
+
+width: 500px;
+height: 500px;
+border: 2px solid black;
+background-color: yellow;
+
+
+}
+
+
+</style>
+</head>
+<body id="arka">
+
+
+
+
+<canvas  id="c1"  ></canvas>
+	
+	<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/asd.js}"></script>
+
+
+	<script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			
+			$("#div2").draggable({
+				
+				
+			});
+			
+			
+
+		
+
+		});
+	</script>
+</body>
+</html>

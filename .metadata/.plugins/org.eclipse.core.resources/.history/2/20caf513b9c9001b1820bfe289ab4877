@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+
+
+
+
+<title>Insert title here</title>
+</head>
+<body  >
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+	<div class="container">
+
+
+
+
+
+
+
+
+		<form th:action="@{/}" th:object="${question}" method="get">
+			<p>
+				<input type="text" th:field="*{qtext}"  id="inptbtn"  />
+				 <input type="Submit" id="btn"	value="search" class="btn btn-primary">
+			</p>
+			<p></p>
+		</form>
+
+
+		<a th:href="@{/new}"> Soru ekle</a>
+
+
+
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">question text</th>
+					<th scope="col">question category</th>
+					<th scope="col">Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="question : ${questions}">
+					<td th:text="${question.id}"></td>
+					<td th:text="${question.qtext}"></td>
+
+
+
+					<td th:each="category : ${categories}"
+						th:if="(${category.categoryid} == ${question.categoryid})"
+						th:utext="${category.cname}"></td>
+
+
+
+
+
+					<td><a th:href="@{/update/{id}(id=${question.id})}">Edit</a> <a
+						th:href="@{/delete/{id}(id=${question.id})}">Delete</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+	
+	<div class="container" >
+	
+	
+	<button  id="btn2" > test</button>
+	
+	</div>
+
+
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+  
+	
+	$("#inptbtn").keyup(function() {
+		var a=$("#inptbtn").val();
+		
+		$("#btn").attr('value', a);
+		
+	});
+	
+});
+
+</script>
+
+
+</body>
+</html>

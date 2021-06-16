@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<title>yeni soru ekleme</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+	<div class="container">
+
+		<!--  
+ 
+ -->
+
+
+
+		<form id="test" th:action="@{/answerAdd}" method="post">
+
+			<div class="form-group" th:object="${test}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="text" th:field="*{tQuestion.qtext}" /> 
+			</div>
+		
+			<div class="form-group" th:object="${test}">
+				<label for="exampleInputEmail1">Question text</label> <input
+					type="hidden" th:field="*{tQuestion.questionid}" /> 
+
+			</div>
+			<p th:text=${test.tQuestion.questionid}></p>
+
+			<div class="form-group" th:object="${test}">
+				<label for="exampleInputEmail1">answer text</label> <input
+					type="text" th:field="*{tAnswer.answerText}" />
+			</div>
+			<div>
+
+				<div class="row">
+					<div class="col">
+
+						<label>ANSWER İS TRUE</label> <input type="checkbox"
+							th:field="*{test.tAnswer.Truemu}" />
+					</div>
+				</div>
+
+			</div>
+
+			<button type="submit" name="addItem">add answer</button>
+
+		</form>
+		
+		
+		
+
+	</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+<meta charset="UTF-8">
+<title>update soru</title>
+</head>
+<body>
+
+
+	<nav th:replace="fragments/navbar :: navbar"></nav>
+
+
+	<div class="container">
+
+		<!--  
+ 
+ -->
+
+
+
+		<div class="alert alert-primary" role="alert">update soru</div>
+
+		<form th:action="@{/save}" th:object="${question}" method="post">
+
+			<div class="row">
+				<div class="col">
+					<input type="text" th:field="*{id}" disabled="disabled" />
+				</div>
+				<input type="hidden" th:field="*{id}">
+
+				<div class="col">Question id</div>
+
+				<div class="col"></div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<input type="text" th:field="*{qtext}" />
+				</div>
+				<div class="col">Question text</div>
+				<div class="col"></div>
+			</div>
+			<div class="row">
+			<div class="col">
+			
+			
+				<select th:field="*{categoryid}"     >
+			
+				<option th:each="category : ${categories}"
+					th:value="${category.categoryid}" th:utext="${category.cname}" />
+			</select>
+				
+				</div>
+				</div>
+				
+				
+				
+			
+
+
+
+
+			<button type="submit">save</button>
+
+
+
+
+		</form>
+
+
+
+	</div>
+
+
+
+</body>
+</html>

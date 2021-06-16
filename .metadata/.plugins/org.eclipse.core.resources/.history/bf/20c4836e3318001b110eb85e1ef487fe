@@ -1,0 +1,37 @@
+package com.example.demo.models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+
+public class Answer {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	public int answerId;
+
+	public String answerText;
+
+	public String getAnswerText() {
+		return answerText;
+	}
+
+	public void setAnswerText(String answerText) {
+		this.answerText = answerText;
+	}
+
+	public boolean isTrue() {
+		return isTrue;
+	}
+
+	public void setTrue(boolean isTrue) {
+		this.isTrue = isTrue;
+	}
+
+	public boolean isTrue;
+
+}
